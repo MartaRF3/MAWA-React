@@ -1,0 +1,29 @@
+.current {
+  position: relative;
+  text-align: right;
+  &__title {
+    padding-bottom: var(--pad-1);
+    padding-left: var(--pad-3);
+    max-width: 480px;
+
+    color: var(--blue);
+
+    font-size: 45px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  &__date {
+    padding-bottom: var(--pad-1);
+
+    color: var(--black);
+  }
+  &__temperature {
+    padding-bottom: var(--pad-3);
+
+    color: var(--black);
+    font-size: 37px;
+  }
+  #current-emoji {
+    font-size: 45px;
+  }
+}
