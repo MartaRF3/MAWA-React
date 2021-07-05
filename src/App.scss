@@ -1,4 +1,5 @@
-@import './components/current/Current';
+@import './components/Current';
+@import './components/Searcher';
 
 :root {
   --pad-1: 10px;
@@ -63,36 +64,6 @@ h1, p, span {
   &:hover {
     background-color: white;
     color: var(--black);
-  }
-}
-
-.searcher {
-  max-width: 250px;
-  display: flex;
-  justify-content: space-between;
-  border: var(--border-2);
-  border-radius: var(--br-1);
-
-  background-color: var(--white);
-  &__input {
-    padding: var(--pad-1);
-    border: none;
-    width: 80%;
-    font-family: inherit;
-    font-size: inherit;
-    color: var(--black);
-  }
-  &__submit {
-    width: 40px;
-    height: 40px;
-    padding: 0 0 3px;
-    border: var(--border-2);
-    border-radius: 50%;
-
-    background-color: var(--blue);
-
-    font-size: 19px;
-    cursor: pointer;
   }
 }
 
