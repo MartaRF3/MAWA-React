@@ -1,49 +1,88 @@
 import React, {useState} from 'react';
-import axios from 'axios';
+
 import IconData from './IconData';
 
-function Current(props) {
+let Current = ({weatherData}) => {
 
-  let APIKey = "e61181eedc6dee94a571b45ef2692956";
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${props.cityName}&appid=${APIKey}&units=metric`;
-
-  let [minTemp, setMinTemp] = useState('');
-  let [maxTemp, setMaxTemp] = useState('');
-  let [wind, setWind] = useState('');
-  let [humidity, setHumidity] = useState('');
-  let [description, setDescription] = useState('');
-  let [code, setCode] = useState('');
-  let [emoji, setEmoji] = useState('');
-
-  let updateData = (response) => {
-    setMinTemp(Math.round(response.data.main.temp_min));
-    setMaxTemp(Math.round(response.data.main.temp_max));
-    setWind(Math.round(response.data.wind.speed));
-    setHumidity(Math.round(response.data.main.humidity));
-    setDescription(response.data.weather[0].description);
-    setCode(response.data.weather[0].icon);
-    setEmoji(IconData.find(x => x.iconCode === code).emoji);
-  }
+  let [isCelsius, setIsCelsius] = useState(true);
   
-  axios.get(url)
-    .then(updateData)
-    .catch(error => console.log(error))
-  if (minTemp) {
+  let showTempConverter = () => {
+    let tempConverterBox = document.querySelector(".temp-converter");
+    tempConverterBox.style.display = "inline-block";
+
+    setTimeout(function() {
+      tempConverterBox.style.display = "none";
+    }, 2000)
+  }
+
+  let tempConvert = () => {
+    let converter = document.querySelector("#converter");
+    let tempFormat = document.querySelectorAll(".temp-format");
+    let tempArray = document.querySelectorAll(".temp");
+
+    function turnTempToF(temp) {
+      let newTemp = (temp * 1.8) + 32;
+      return Math.round(newTemp);
+    }
+    function turnTempToC(temp) {
+      let newTemp = (temp - 32) / 1.8
+      return Math.round(newTemp);
+    }
+
+    if (isCelsius) {
+      // Convert temp values
+      tempArray.forEach(temp => {
+        let newTemp = turnTempToF(temp.innerHTML);
+        temp.innerHTML = newTemp;
+      });
+      // Change the tags
+      tempFormat.forEach(el => {
+        el.innerHTML = " °F";
+      });
+      // Change the button text
+      converter.innerHTML = "See in °C";
+      // Log the change
+      setIsCelsius(false);
+
+    } else {
+      // Convert temp values
+      tempArray.forEach(temp => {
+        let newTemp = turnTempToC(temp.innerHTML);
+        temp.innerHTML = newTemp;
+      });
+      // Change the tags
+      tempFormat.forEach(el => {
+        el.innerHTML = " °C";
+      });
+      // Change the button text
+      converter.innerHTML = "See in °F";
+      // Log the change
+      setIsCelsius(true);
+    }
+  }
+
+  if (weatherData.ready) {
+    let emoji = IconData.find(x => x.iconCode === weatherData.code).emoji;
+    let minTemp = Math.round(weatherData.minTemp);
+    let maxTemp = Math.round(weatherData.maxTemp);
+
     return (
       <div className="current">
-        <h1 className="current__title">{props.cityName}</h1>
-        <p className="current__date"></p>
-        <p className="current__temperature">
-          <span>{emoji}</span>
-          <span>{minTemp}</span><span className="temp-format">°C</span> /
-          <span>{maxTemp}</span><span className="temp-format">°C</span>
-        </p>
-        <p>Wind speed: {wind}m/s</p>
-        <p>Humidity: {humidity}%</p>
-        <p>Description: {description}</p>
-        <div className="temp-converter">
-          <button id="converter">See in °F</button>
+        <h1 className="current__title">{weatherData.city}</h1>
+        <p className="current__date">{weatherData.date}</p>
+        <div className="current__temperature">
+          <div className="temp__container" onMouseOver={showTempConverter}>
+            <span>{emoji}</span>
+            <span className="temp">{minTemp}</span><span className="temp-format">°C </span> /
+            <span className="temp">{maxTemp}</span><span className="temp-format">°C</span>
+          </div>
+          <div className="temp-converter">
+            <button id="converter" onClick={tempConvert}>See in °F</button>
+          </div>
         </div>
+        <p>Wind speed: {weatherData.wind}m/s</p>
+        <p>Humidity: {weatherData.humidity}%</p>
+        <p>Description: {weatherData.description}</p>
       </div>
     )
   } else {
@@ -53,6 +92,6 @@ function Current(props) {
       </div>
     )
   }
-};
+}
 
 export default Current;

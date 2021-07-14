@@ -1,5 +1,7 @@
+@import './components/Weather';
 @import './components/Current';
-@import './components/Searcher';
+@import './components/Forecast';
+@import './components/ForecastDay';
 
 :root {
   --pad-1: 10px;
@@ -44,12 +46,18 @@ h1, p, span {
 }
 .container {
   display: flex;
+  flex-direction: column;
+}
+.top-section {
+  display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
-.left-container {
-  width: 40%;
+.bottom-section {
+  display: flex;
+  flex-wrap: wrap;
 }
+
 .local-city {
   padding: calc(var(--pad-1)/4) calc(var(--pad-1)/2);
   margin-top: calc(var(--pad-1)/2);
@@ -67,56 +75,6 @@ h1, p, span {
   }
 }
 
-.temp-converter {
-  position: absolute;
-  right: -10px;
-  bottom: 0;
-
-  display: none;
-
-  border: var(--border-1);
-  border-radius: var(--br-1);
-
-  background-color: var(--white);
-  font-size: 14px;
-
-  button {
-    padding: calc(var(--pad-1)/2);
-    border: none;
-    background-color: transparent;
-    font-size: inherit;
-    font-family: inherit;
-    color: inherit;
-    cursor: pointer;
-  }
-}
-
-.forecast {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-
-  margin: 0 auto;
-  &__card {
-    margin: calc(var(--pad-1));
-    padding: var(--pad-1);
-    border: var(--border-1);
-    border-radius: var(--br-1);
-
-    background-color: var(--white);
-  }
-  &__date {
-    padding-bottom: var(--pad-1);
-  }
-  &__emoji {
-    padding-bottom: var(--pad-1);
-
-    text-align: center;
-    font-size: 40px;
-  }
-  &__temperature {
-  }
-}
 .repo {
   position: relative;
   bottom: -10px;

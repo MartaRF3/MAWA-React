@@ -18,12 +18,33 @@
     color: var(--black);
   }
   &__temperature {
-    padding-bottom: var(--pad-3);
+    padding-bottom: calc(var(--pad-3) + 5px);
 
     color: var(--black);
     font-size: 37px;
   }
   #current-emoji {
     font-size: 45px;
+  }
+  .temp-converter {
+    float: right;
+  
+    display: none;
+  
+    border: var(--border-1);
+    border-radius: var(--br-1);
+  
+    background-color: var(--white);
+    font-size: 14px;
+  
+    button {
+      padding: calc(var(--pad-1)/2);
+      border: none;
+      background-color: transparent;
+      font-size: inherit;
+      font-family: inherit;
+      color: inherit;
+      cursor: pointer;
+    }
   }
 }
