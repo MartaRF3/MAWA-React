@@ -63,36 +63,36 @@ let Weather = () => {
   }
 
   return (
-    <div className="container">
-      <section className="top-section">
-        <div className="seacher__container">
-          <form className="searcher" action="#">
-            <input
-              onChange={inputTextHandler}
-              className="searcher__input"
-              type="text"
-              name="city"
-              id="city"
-              autoFocus="on"
-              autoComplete="off"
-              placeholder="Write a city here..."
-              value={inputText}
-            />
-            <button 
-                onClick={submitHandler}
-                className="searcher__submit" 
-                type="submit" 
-                id="submit"
-            >🔎</button>
-          </form>
-          {/* <button class="local-city">Your current location</button> */}
-        </div>
+    <main className="main">
+      <div className="main__container">
+        <section className="section searcher">
+          <div className="searcher__container">
+            <form action="#">
+              <input
+                onChange={inputTextHandler}
+                className="searcher__input"
+                type="text"
+                name="city"
+                id="city"
+                autoFocus="on"
+                autoComplete="off"
+                placeholder="Write a city here..."
+                value={inputText}
+              />
+              <button 
+                  onClick={submitHandler}
+                  className="searcher__submit" 
+                  type="submit" 
+                  id="submit"
+                  >🔎</button>
+            </form>
+            {/* <button class="local-city">Your current location</button> */}
+          </div>
+        </section>
         <Current weatherData={weatherData} />
-      </section>
-      <section className="bottom-section">
         <Forecast forecastArray={forecastArray} />
-      </section>
-    </div>
+      </div>
+    </main>
   )
 }
 

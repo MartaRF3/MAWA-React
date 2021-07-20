@@ -1,0 +1,25 @@
+.footer {
+  grid-area: footer;
+  display: grid;
+  grid-template-columns: auto minmax(auto, 800px) auto;
+  
+  background-color: var(--primary);
+  color: var(--cream);
+  
+  &__container {
+    grid-column: 2;
+    width: 100%;
+    margin: 0 auto;
+    padding: var(--xmd);
+  }
+  &__text {
+    text-align: center;
+    font-size: 14px;
+    
+    a {
+      font-weight: bold;
+      color: var(--second);
+      text-shadow: 1px 1px 0 var(--white);
+    }
+  }
+}

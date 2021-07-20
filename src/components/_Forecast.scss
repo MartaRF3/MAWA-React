@@ -1,27 +1,30 @@
 .forecast {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-
-  margin: 0 auto;
+  &__container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--sm);
+  }
   
   &__card {
-    margin: calc(var(--pad-1));
-    padding: var(--pad-1);
-    border: var(--border-1);
+    padding: var(--sm) var(--md);
+    border: var(--border-2);
     border-radius: var(--br-1);
 
-    background-color: var(--white);
+    background-color: var(--cream);
   }
   &__date {
-    padding-bottom: var(--pad-1);
+    padding-bottom: var(--sm);
+    font-size: 14px;
+    text-align: center;
   }
   &__emoji {
-    padding-bottom: var(--pad-1);
-
+    padding-bottom: var(--sm);
+    text-shadow: var(--text-shadow);
     text-align: center;
     font-size: 40px;
   }
   &__temperature {
+    font-weight: bold;
   }
 }

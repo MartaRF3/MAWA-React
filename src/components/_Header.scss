@@ -1,0 +1,42 @@
+// Dynamic variables
+.header {
+  &__title {
+    --font-size: 37px;
+  }
+}
+
+@media (min-width: 860px) {
+  .header {
+    &__title {
+      --font-size: 60px;
+    }
+  }
+}
+
+.header {
+  grid-area: header;
+  display: grid;
+  grid-template-columns: auto minmax(auto, 1000px) auto;
+  background-color: var(--second);
+  font-family: 'Luckiest Guy', cursive;
+  
+  &__container {
+    grid-column: 2;
+    width: 100%;
+    margin: 0 auto;
+    padding: var(--xmd);
+  }
+  &__title {
+    text-align: center;
+    font-size: var(--font-size);
+    color: transparent;
+    background-image: url("../images/background.jpg");
+    background-size: 1300px 200px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 4px 2px 0 var(--white);
+  }
+}
