@@ -1,14 +1,13 @@
 BUGS!
-- When a wrong value is entered, it changes the name but it doesn't update the temperature,
-so it is unclear if it has found it or not
+- When a wrong value is entered, nothing happens
    - Erase old info
    - Configure an error
 
 
 EXTRA
-- add a language chooser
+- Add a language chooser
 - Have the date more nicely done
-
+- Add a local-weather option
 
 
 ---> DONE!

@@ -3,7 +3,6 @@ import React from 'react';
 import IconData from './IconData';
 
 let ForecastDay = ({ forecast }) => {
-  console.log(forecast)
   let date = new Date(forecast.dt * 1000).toLocaleDateString('es-ES', {weekday: 'short', day: '2-digit', month: '2-digit' })
   let iconCode = forecast.weather[0].icon;
   let emoji = IconData.find(x => x.iconCode === iconCode).emoji;
