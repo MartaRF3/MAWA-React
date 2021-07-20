@@ -25,7 +25,6 @@ let Weather = () => {
   }
 
   let responseHandler = (response) => {
-    console.log(response);
     setWeatherData({
       ready: true,
       coord: response.data.coord,
