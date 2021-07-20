@@ -1,41 +1,93 @@
+// Dynamic variables
+.current {
+  &__container {
+    --flex-direction: column;
+  }
+  &__title {
+    --font-size: calc(26px + 3vw);
+  }
+}
+
+@media (min-width: 860px) {
+  .current {
+    &__container {
+      --flex-direction: row;
+      .container-1 {
+        --order: 2;
+      }
+      .container-2 {
+        --order: 1;
+      }
+    }
+    &__title {
+      --font-size: 50px;
+    }
+  }
+}
+
 .current {
   position: relative;
   text-align: right;
+
+  &__container {
+    display: flex;
+    flex-direction: var(--flex-direction);
+    justify-content: flex-end;
+    align-items: flex-end;
+    .container-1 {
+      order: var(--order);
+    }
+    .container-2 {
+      order: var(--order);
+      width: 100%;
+      padding-bottom: 50px;
+      text-align: left;
+    }
+  }
+  &__info {
+    color: var(--black);
+    font-size: 14px;
+  }
   &__title {
-    padding-bottom: var(--pad-1);
-    padding-left: var(--pad-3);
-    max-width: 480px;
+    padding-bottom: var(--md);
 
-    color: var(--blue);
+    color: var(--second);
+    text-shadow: var(--text-shadow);
 
-    font-size: 45px;
+    font-size: var(--font-size);
     font-weight: 700;
     text-transform: uppercase;
   }
   &__date {
-    padding-bottom: var(--pad-1);
-
+    padding-bottom: var(--sm);
     color: var(--black);
+    font-size: 16px;
   }
   &__temperature {
-    padding-bottom: calc(var(--pad-3) + 5px);
+    padding-bottom: var(--xlg);
 
     color: var(--black);
-    font-size: 37px;
+    font-size: 35px;
   }
-  #current-emoji {
+  .temp__container {
+    display: flex;
+    justify-content: flex-end;
+  }
+  &__emoji {
+    padding-right: var(--md);
     font-size: 45px;
+    text-shadow: var(--text-shadow);
   }
   .temp-converter {
     float: right;
-  
     display: none;
   
-    border: var(--border-1);
+    padding: var(--sm) var(--md);
     border-radius: var(--br-1);
-  
-    background-color: var(--white);
+    background-color: var(--second);
+    color: var(--cream);
     font-size: 14px;
+    font-weight: 700;
   
     button {
       padding: calc(var(--pad-1)/2);

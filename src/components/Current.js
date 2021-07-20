@@ -5,7 +5,7 @@ import IconData from './IconData';
 let Current = ({weatherData}) => {
 
   let [isCelsius, setIsCelsius] = useState(true);
-  
+
   let showTempConverter = () => {
     let tempConverterBox = document.querySelector(".temp-converter");
     tempConverterBox.style.display = "inline-block";
@@ -67,23 +67,29 @@ let Current = ({weatherData}) => {
     let maxTemp = Math.round(weatherData.maxTemp);
 
     return (
-      <div className="current">
-        <h1 className="current__title">{weatherData.city}</h1>
-        <p className="current__date">{weatherData.date}</p>
-        <div className="current__temperature">
-          <div className="temp__container" onMouseOver={showTempConverter}>
-            <span>{emoji}</span>
-            <span className="temp">{minTemp}</span><span className="temp-format">°C </span> /
-            <span className="temp">{maxTemp}</span><span className="temp-format">°C</span>
+      <section className="section current">
+        <div className="current__container">
+          <div className="container-1">
+            <h1 className="current__title">{weatherData.city}</h1>
+            <p className="current__date">{weatherData.date}</p>
+            <div className="current__temperature">
+              <div className="temp__container" onMouseOver={showTempConverter}>
+                <span className="current__emoji">{emoji}</span>
+                <span className="temp">{minTemp}</span><span className="temp-format">°C </span> /
+                <span className="temp">{maxTemp}</span><span className="temp-format">°C</span>
+              </div>
+              <div className="temp-converter">
+                <button id="converter" onClick={tempConvert}>See in °F</button>
+              </div>
+            </div>
           </div>
-          <div className="temp-converter">
-            <button id="converter" onClick={tempConvert}>See in °F</button>
+          <div className="container-2">
+            <p className="current__info">Wind speed: {weatherData.wind}m/s</p>
+            <p className="current__info">Humidity: {weatherData.humidity}%</p>
+            <p className="current__info">Description: {weatherData.description}</p>
           </div>
         </div>
-        <p>Wind speed: {weatherData.wind}m/s</p>
-        <p>Humidity: {weatherData.humidity}%</p>
-        <p>Description: {weatherData.description}</p>
-      </div>
+      </section>
     )
   } else {
     return (
