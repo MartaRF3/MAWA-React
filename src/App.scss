@@ -10,7 +10,6 @@
 }
 .wrapper {
   &__container {
-    min-height: 100vh;
     --grid-template-columns: 20px 1fr 20px;
   }
 }
@@ -56,12 +55,13 @@ body {
 
 .wrapper {
   &__container {
+    min-height: 100vh;
     display: grid;
     grid-template-columns: var(--grid-template-columns);
     grid-template-rows: auto 1fr auto;
     grid-template-areas: 
-      "header header header"
-      "...... main   ......"
-      "footer footer footer"
+    "header header header"
+    "...... main   ......"
+    "footer footer footer"
   }
 }
